@@ -1,0 +1,42 @@
+<mvc:View controllerName="sapui5.SAPUI5_FINAL.controller.CreateEntity" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:smart="sap.ui.comp.smartfield" xmlns="sap.m">
+	<semantic:DetailPage id="page" navButtonPress="onNavBack" title="{viewModel>/viewTitle}" busy="{viewModel>/busy}">
+		<semantic:content>
+			<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" id="newEntitySimpleForm"
+				labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024"
+				title="{= ${viewModel>/mode} === 'edit'? 'Edit YXM_128_ODATA_FLEXSO_CDS_SRV_01.Project': 'New YXM_128_ODATA_FLEXSO_CDS_SRV_01.Project'}">
+				<f:content>
+					<Label text="Number" required="false"/>
+					<Input name="ProjectId" id="ProjectId_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'ProjectId', type: 'sap.ui.model.odata.type.Int32' , constraints:{ nullable:false } }"/>
+					<Label text="Titel" required="true"/>
+					<Input name="Titel" id="Titel_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Titel', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:30, nullable:false } }"/>
+					<Label text="Klant" required="true"/>
+					<Input name="Klant" id="Klant_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Klant', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:30, nullable:false } }"/>
+					<Label text="Locatie" required="true"/>
+					<Input name="Locatie" id="Locatie_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Locatie', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:30, nullable:false } }"/>
+					<Label text="Start" required="true"/>
+					<DatePicker name="Startdatum" value="{ path: 'Startdatum', type: 'sap.ui.model.type.DateTime'}" id="Startdatum_id" type="DateTime"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"/>
+					<Label text="Time Stamp" required="true"/>
+					<DatePicker name="Einde" value="{ path: 'Einddatum', type: 'sap.ui.model.type.DateTime'}" id="Einddatum_id" type="DateTime"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"/>
+				</f:content>
+			</f:SimpleForm>
+		</semantic:content>
+		<semantic:saveAction>
+			<semantic:SaveAction id="save" enabled="{viewModel>/enableCreate}" press="onSave"/>
+		</semantic:saveAction>
+		<semantic:cancelAction>
+			<semantic:CancelAction id="cancel" press="onCancel"></semantic:CancelAction>
+		</semantic:cancelAction>
+	</semantic:DetailPage>
+</mvc:View>
