@@ -275,6 +275,11 @@ sap.ui.define([
 			this.getRouter().getTargets().display("create");
 
 		},
+		//Add employee
+		onAddEmployee: function(){
+			this.getModel("appView").setProperty("/addEnabled", false);
+			this.getRouter().getTargets().display("createProjectlid");
+		}
 
 		/* =========================================================== */
 		/* begin: internal methods                                     */
