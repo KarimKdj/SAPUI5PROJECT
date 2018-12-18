@@ -115,7 +115,17 @@
 						"master",
 						"object"
 					]
+				},
+				{
+						"pattern": "ProjectlidSet/{ProjectlidId}",
+						"name": "projectlidObject",
+						"target": [
+						"master",
+						"objectProjectlid"
+					]
 				}
+					
+				
 			],
 			"targets": {
 				"master": {
@@ -128,6 +138,12 @@
 					"viewName": "Detail",
 					"viewId": "detail",
 					"viewLevel": 2
+				},
+					"objectProjectlid": {
+					"viewName": "Detail",
+					"viewId": "detail",
+					"viewLevel": 2
+					
 				},
 				"create": {
 					"viewName": "CreateEntity",
