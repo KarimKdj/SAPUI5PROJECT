@@ -34,8 +34,8 @@
 					</IconTabFilter>
 					<IconTabFilter icon="sap-icon://employee" iconColor="Positive" text="Employees" count="" design="Vertical" showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
                          <content>
-                            <Button text="Add employee" type="Default" icon="sap-icon://capital-projects" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" class="sapUiTinyMargin" press="_onButtonPress"/>
-                            <List id="list2" items="{ path: '/ProjectlidSet', sorter: { path: 'Titel', descending: false }, groupHeaderFactory: '.createGroupHeader' }"
+                            <Button text="Add employee" type="Default" icon="sap-icon://capital-projects" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" class="sapUiTinyMargin" press="onAddEmployee"/>
+                            <List id="list2" items="{ path: '/ProjectlidSet', sorter: { path: 'Achternaam', descending: false }, groupHeaderFactory: '.createGroupHeader' }"
 				busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}"
 				mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true"
 				updateFinished="onUpdateFinished" selectionChange="onSelectionChange">
@@ -45,8 +45,8 @@
 					</Toolbar>
 				</infoToolbar>
 				<items>
-					<ObjectListItem type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}" press="onSelectionChange" title="{Titel}"
-						number="{ path: 'ProjectId', formatter: '.formatter.currencyValue' }"></ObjectListItem>
+					<ObjectListItem type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}" press="onSelectionChange" title="{Achternaam}"
+						number="{ path: 'ProjectlidId', formatter: '.formatter.currencyValue' }"></ObjectListItem>
 				</items>
 			</List>	
 						</content>
