@@ -29,6 +29,7 @@ sap.ui.define([
 		onInit: function () {
 			// Control state model
 			var oList = this.byId("list"),
+			oListProjectlid = this.byId("list2"),
 				oViewModel = this._createViewModel(),
 				// Put down master list's original value for busy indicator delay,
 				// so it can be restored later on. Busy handling on the master list is
@@ -38,6 +39,7 @@ sap.ui.define([
 			this._oGroupSortState = new GroupSortState(oViewModel, grouper.groupUnitNumber(this.getResourceBundle()));
 
 			this._oList = oList;
+			this.oListProjectlid = oListProjectlid;
 			// keeps the filter and search state
 			this._oListFilterState = {
 				aFilter: [],
@@ -60,6 +62,7 @@ sap.ui.define([
 			});
 
 			this.getRouter().getRoute("master").attachPatternMatched(this._onMasterMatched, this);
+			this.getRouter().getRoute("projectlidObject").attachPatternMatched(this._onProjectlidMatched, this);
 			this.getRouter().attachBypassed(this.onBypassed, this);
 			this._oODataModel = this.getOwnerComponent().getModel();
 		},
@@ -120,6 +123,7 @@ sap.ui.define([
 		 */
 		onRefresh: function () {
 			this._oList.getBinding("items").refresh();
+			this._oListProjectlid.getBinding("items").refresh();
 		},
 
 		/**
@@ -217,6 +221,21 @@ sap.ui.define([
 			}
 			that.getModel("appView").setProperty("/addEnabled", true);
 		},
+		
+		onSelectionChangeProjectlid: function (oEvent) {
+			var that = this;
+			var oItem = oEvent.getParameter("listItem") || oEvent.getSource();
+			var fnLeave = function () {
+				that._oODataModel.resetChanges();
+				that._showDetailProjectlid(oItem);
+			};
+			if (this._oODataModel.hasPendingChanges()) {
+				this._leaveEditPage(fnLeave);
+			} else {
+				this._showDetailProjectlid(oItem);
+			}
+			that.getModel("appView").setProperty("/addEnabled", true);
+		},
 
 		/**
 		 * Event handler for the bypassed event, which is fired when no routing pattern matched.
@@ -225,6 +244,8 @@ sap.ui.define([
 		 */
 		onBypassed: function () {
 			this._oList.removeSelections(true);
+			this._oListProjectlid.removeSelections(true);
+
 		},
 
 		/**
@@ -352,6 +373,28 @@ sap.ui.define([
 				}.bind(this)
 			);
 		},
+		
+			_onProjectlidMatched: function () {
+			this._oListSelector.oWhenListLoadingIsDone.then(
+				function (mParams) {
+					if (mParams.list.getMode() === "None") {
+						return;
+					}
+					this.getModel("appView").setProperty("/addEnabled", true);
+					if (!mParams.list.getSelectedItem()) {
+						this.getRouter().navTo("ProjectlidObject", {
+							ProjectlidId: encodeURIComponent(mParams.firstListitem.getBindingContext().getProperty("ProjectlidId"))
+						}, true);
+					}
+				}.bind(this),
+				function (mParams) {
+					if (mParams.error) {
+						return;
+					}
+					this.getRouter().getTargets().display("detailNoObjectsAvailable");
+				}.bind(this)
+			);
+		},
 
 		/**
 		 * Shows the selected item on the detail page
@@ -363,6 +406,13 @@ sap.ui.define([
 			var bReplace = !Device.system.phone;
 			this.getRouter().navTo("object", {
 				ProjectId: encodeURIComponent(oItem.getBindingContext().getProperty("ProjectId"))
+			}, bReplace);
+		},
+		
+			_showDetailProjectlid: function (oItem) {
+			var bReplace = !Device.system.phone;
+			this.getRouter().navTo("objectProjectlid", {
+				ProjectlidId: encodeURIComponent(oItem.getBindingContext().getProperty("ProjectlidId"))
 			}, bReplace);
 		},
 
@@ -378,6 +428,10 @@ sap.ui.define([
 				sTitle = this.getResourceBundle().getText("masterTitleCount", [iTotalItems]);
 				this.getModel("masterView").setProperty("/title", sTitle);
 			}
+			if (this._oListProjectlid.getBinding("items").isLengthFinal()) {
+				sTitle = this.getResourceBundle().getText("masterTitleCount", [iTotalItems]);
+				this.getModel("masterView").setProperty("/title", sTitle);
+			}
 		},
 
 		/**
@@ -388,6 +442,7 @@ sap.ui.define([
 			var aFilters = this._oListFilterState.aSearch.concat(this._oListFilterState.aFilter),
 				oViewModel = this.getModel("masterView");
 			this._oList.getBinding("items").filter(aFilters, "Application");
+			this._oListProjectlid.getBinding("items").filter(aFilters, "Application");
 			// changes the noDataText of the list in case there are no filter results
 			if (aFilters.length !== 0) {
 				oViewModel.setProperty("/noDataText", this.getResourceBundle().getText("masterListNoDataWithFilterOrSearchText"));
@@ -403,6 +458,7 @@ sap.ui.define([
 		 */
 		_applyGroupSort: function (aSorters) {
 			this._oList.getBinding("items").sort(aSorters);
+			this._oListProjectlid.getBinding("items").sort(aSorters);
 		},
 
 		/**

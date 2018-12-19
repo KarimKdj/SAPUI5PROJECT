@@ -16,7 +16,7 @@ sap.ui.define([
 
 		onInit: function () {
 			var that = this;
-			this.getRouter().getTargets().getTarget("create").attachDisplay(null, this._onDisplay, this);
+			this.getRouter().getTargets().getTarget("createProjectlid").attachDisplay(null, this._onDisplay, this);
 			this._oODataModel = this.getOwnerComponent().getModel();
 			this._oResourceBundle = this.getResourceBundle();
 			this._oViewModel = new JSONModel({
@@ -133,7 +133,7 @@ sap.ui.define([
 				// The history contains a previous entry
 				history.go(-1);
 			} else {
-				this.getRouter().getTargets().display("object");
+				this.getRouter().getTargets().display("projectlidObject");
 			}
 		},
 
@@ -247,7 +247,7 @@ sap.ui.define([
 		_fnUpdateSuccess: function () {
 			this.getModel("appView").setProperty("/busy", false);
 			this.getView().unbindObject();
-			this.getRouter().getTargets().display("object");
+			this.getRouter().getTargets().display("projectlidObject");
 		},
 
 		/**
