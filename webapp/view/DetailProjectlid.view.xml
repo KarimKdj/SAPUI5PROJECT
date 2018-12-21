@@ -1,6 +1,6 @@
 <mvc:View controllerName="sapui5.SAPUI5_FINAL.controller.DetailProjectlid" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
 	xmlns:footerbar="sap.ushell.ui.footerbar">
-	<semantic:DetailPage id="projectlid" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}"
+	<semantic:DetailPage id="projectlid" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitleProjectlid}"
 		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
 		<semantic:content>
 			<ObjectHeader id="objectHeader" title="{Achternaam} {Voornaam}" number="{ path: 'ProjectlidId', formatter: '.formatter.currencyValue' }"></ObjectHeader>
@@ -14,7 +14,7 @@
 									<Text text="Employee number: {projectlidId}"  width="100%"  textAlign="Begin" textDirection="Inherit" visible="true"/>
                             		<Text text="First name: {Voornaam}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                     <Text text="Last name: {Achternaam}"  width="100%"  textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                    <Text text="Function: {Function}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                    <Text text="Function: {Functie}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 
 				</semantic:content>
 		<semantic:editAction>

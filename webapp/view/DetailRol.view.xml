@@ -1,6 +1,6 @@
 <mvc:View controllerName="sapui5.SAPUI5_FINAL.controller.DetailRol" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
 	xmlns:footerbar="sap.ushell.ui.footerbar">
-	<semantic:DetailPage id="detailRol" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}"
+	<semantic:DetailPage id="detailRol" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitleRole}"
 		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
 		<semantic:content>
 			<ObjectHeader id="objectHeaderRol" title="{Naam}" number="{ path: 'RolId'}"></ObjectHeader>
