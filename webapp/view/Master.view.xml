@@ -37,7 +37,7 @@
 					</IconTabFilter>
 					<IconTabFilter icon="sap-icon://employee" iconColor="Positive" text="Employees" count="" design="Vertical" showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
                          <content>
-                            <Button text="Add employee" type="Default" icon="sap-icon://capital-projects" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" class="sapUiTinyMargin" id="addButtonProjectlid" press="onAddProjectlid"/>
+                            <Button text="Add employee" type="Default" icon="sap-icon://employee" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" class="sapUiTinyMargin" id="addButtonProjectlid" press="onAddProjectlid"/>
                             <List id="list2" items="{ path: '/ProjectlidSet', sorter: { path: 'Achternaam', descending: false }, groupHeaderFactory: '.createGroupHeader' }"
 				busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}"
 				mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true"
