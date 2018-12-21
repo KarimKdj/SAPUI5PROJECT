@@ -41,7 +41,7 @@
                             <List id="list2" items="{ path: '/ProjectlidSet', sorter: { path: 'Achternaam', descending: false }, groupHeaderFactory: '.createGroupHeader' }"
 				busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}"
 				mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true"
-				updateFinished="onUpdateFinished" selectionChange="onSelectionChange">
+				updateFinished="onUpdateFinished" selectionChange="onSelectionChangeProjectlid">
 				<infoToolbar>
 					<Toolbar active="true" id="filterBar2" visible="{masterView>/isFilterBarVisible}" press="onOpenViewSettings">
 						<Title id="filterBarLabel2" text="{masterView>/filterBarLabel}"/>
@@ -62,7 +62,7 @@
 							<List id="list3" items="{ path: '/RolSet', sorter: { path: 'Naam', descending: false }, groupHeaderFactory: '.createGroupHeader' }"
 								busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}"
 								mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true"
-								updateFinished="onUpdateFinished" selectionChange="onSelectionChange">
+								updateFinished="onUpdateFinished" selectionChange="onSelectionChangeRol">
 								<infoToolbar>
 									<Toolbar active="true" id="filterBar3" visible="{masterView>/isFilterBarVisible}" press="onOpenViewSettings">
 										<Title id="filterBarLabel3" text="{masterView>/filterBarLabel}"/>

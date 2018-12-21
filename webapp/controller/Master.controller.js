@@ -41,8 +41,8 @@ sap.ui.define([
 			this._oGroupSortState = new GroupSortState(oViewModel, grouper.groupUnitNumber(this.getResourceBundle()));
 
 			this._oList = oList;
-			this.oListProjectlid = oListProjectlid;
-			this.oListRol = oListRol;
+			this._oListProjectlid = oListProjectlid;
+			this._oListRol = oListRol;
 			// keeps the filter and search state
 			this._oListFilterState = {
 				aFilter: [],
@@ -403,6 +403,7 @@ sap.ui.define([
 		},
 		
 		_onProjectlidMatched: function () {
+			console.log("testonprojectlidmatched");
 			this._oListSelector.oWhenListLoadingIsDone.then(
 				function (mParams) {
 					if (mParams.list.getMode() === "None") {
@@ -462,14 +463,14 @@ sap.ui.define([
 		
 		_showDetailProjectlid: function (oItem) {
 			var bReplace = !Device.system.phone;
-			this.getRouter().navTo("objectProjectlid", {
+			this.getRouter().navTo("projectlidObject", {
 				ProjectlidId: encodeURIComponent(oItem.getBindingContext().getProperty("ProjectlidId"))
 			}, bReplace);
 		},
 		
 		_showDetailRol: function (oItem) {
 			var bReplace = !Device.system.phone;
-			this.getRouter().navTo("objectRol", {
+			this.getRouter().navTo("rolObject", {
 				RolId: encodeURIComponent(oItem.getBindingContext().getProperty("RolId"))
 			}, bReplace);
 		},
