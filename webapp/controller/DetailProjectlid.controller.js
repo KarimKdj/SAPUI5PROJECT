@@ -8,7 +8,7 @@ sap.ui.define([
 ], function (BaseController, JSONModel, formatter, MessageBox, MessageToast) {
 	"use strict";
 
-	return BaseController.extend("sapui5.SAPUI5_FINAL.controller.ProjectLid", {
+	return BaseController.extend("sapui5.SAPUI5_FINAL.controller.DetailProjectlid", {
 
 		formatter: formatter,
 
@@ -101,7 +101,7 @@ sap.ui.define([
 		onEdit: function () {
 			this.getModel("appView").setProperty("/addEnabled", false);
 			var sObjectPath = this.getView().getElementBinding().getPath();
-			this.getRouter().getTargets().display("create", {
+			this.getRouter().getTargets().display("createProjectlid", {
 				mode: "update",
 				objectPath: sObjectPath
 			});

@@ -1,14 +1,14 @@
-<mvc:View controllerName="sapui5.SAPUI5_FINAL.controller.ProjectLid" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+<mvc:View controllerName="sapui5.SAPUI5_FINAL.controller.DetailProjectlid" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
 	xmlns:footerbar="sap.ushell.ui.footerbar">
-	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}"
+	<semantic:DetailPage id="projectlid" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}"
 		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
 		<semantic:content>
 			<ObjectHeader id="objectHeader" title="{Achternaam} {Voornaam}" number="{ path: 'ProjectlidId', formatter: '.formatter.currencyValue' }"></ObjectHeader>
 			<Button text="Edit"/>
 			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
 				<items>
-					<IconTabFilter id="iconTabBarFilter1" icon="sap-icon://hint" tooltip="{i18n>detailIconTabBarInfo}"></IconTabFilter>
-					<IconTabFilter id="iconTabBarFilter2" icon="sap-icon://attachment" tooltip="{i18n>detailIconTabBarAttachments}"></IconTabFilter>
+					<IconTabFilter id="iconTabBarFilterProjectlid1" icon="sap-icon://hint" tooltip="{i18n>detailIconTabBarInfo}"></IconTabFilter>
+					<IconTabFilter id="iconTabBarFilterProjectlid2" icon="sap-icon://attachment" tooltip="{i18n>detailIconTabBarAttachments}"></IconTabFilter>
 				</items>
 			</IconTabBar>
 									<Text text="Employee number: {projectlidId}"  width="100%"  textAlign="Begin" textDirection="Inherit" visible="true"/>
@@ -18,19 +18,19 @@
 
 				</semantic:content>
 		<semantic:editAction>
-			<semantic:EditAction  id="edit" press="onEdit"/>
+			<semantic:EditAction  id="editProjectlid" press="onEdit"/>
 		</semantic:editAction>
 		<semantic:customFooterContent>
-			<Button enabled="true" id="deleteButton" press="onDelete" text="Delete"/>
+			<Button enabled="true" id="deleteProjectlidButton" press="onDelete" text="Delete"/>
 		</semantic:customFooterContent>
 		<semantic:sendEmailAction>
-			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
+			<semantic:SendEmailAction id="shareProjectlidEmail" press="onShareEmailPress"/>
 		</semantic:sendEmailAction>
 		<semantic:shareInJamAction>
-			<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>
+			<semantic:ShareInJamAction id="shareProjectlidInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>
 		</semantic:shareInJamAction>
 		<semantic:saveAsTileAction>
-			<footerbar:AddBookmarkButton id="shareTile" title="{detailView>/saveAsTileTitle}"/>
+			<footerbar:AddBookmarkButton id="shareProjectlidTile" title="{detailView>/saveAsTileTitle}"/>
 		</semantic:saveAsTileAction>
 	</semantic:DetailPage>
 </mvc:View>
