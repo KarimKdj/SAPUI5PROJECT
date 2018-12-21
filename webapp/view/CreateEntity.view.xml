@@ -5,7 +5,7 @@
 		<semantic:content>
 			<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" id="newEntitySimpleForm"
 				labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024"
-				title="{= ${viewModel>/mode} === 'edit'? 'Edit YXM_128_ODATA_FLEXSO_CDS_SRV_01.Project': 'New YXM_128_ODATA_FLEXSO_CDS_SRV_01.Project'}">
+				title="{= ${viewModel>/mode} === 'edit'? 'Edit Project': 'New Project'}">
 				<f:content>
 					<Label text="Number" required="false"/>
 					<Input name="ProjectId" id="ProjectId_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"

@@ -1,6 +1,6 @@
 <mvc:View controllerName="sapui5.SAPUI5_FINAL.controller.Master" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m"
 	xmlns:semantic="sap.m.semantic">
-	<semantic:MasterPage id="page" title="{masterView>/title}" navButtonPress="onNavBack" showNavButton="true">
+	<semantic:MasterPage id="page" title="Project Overview" navButtonPress="onNavBack" showNavButton="true">
 		<semantic:subHeader>
 			<Bar id="headerBar">
 				<contentMiddle>
@@ -11,88 +11,96 @@
 		</semantic:subHeader>
 		<semantic:content>
 			<PullToRefresh id="pullToRefresh" visible="{device>/support/touch}" refresh="onRefresh"/>
-			<IconTabBar expandable="false" expanded="true" applyContentPadding="false" backgroundDesign="Solid" upperCase="false" visible="true" selectedKey="Ok">
-			<items>
-                    <IconTabFilter icon="sap-icon://capital-projects" iconColor="Positive" text="Projects" count="" design="Vertical" showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
-                         <content>
-                            <Button text="Add project" type="Default" icon="sap-icon://capital-projects" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" class="sapUiTinyMargin" id="addButton" press="onAdd"/>
-                            <List id="list" items="{ path: '/ProjectSet', sorter: { path: 'Titel', descending: false }, groupHeaderFactory: '.createGroupHeader' }"
-				busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}"
-				mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true"
-				updateFinished="onUpdateFinished" selectionChange="onSelectionChange">
-				<infoToolbar>
-					<Toolbar active="true" id="filterBar" visible="{masterView>/isFilterBarVisible}" press="onOpenViewSettings">
-						<Title id="filterBarLabel" text="{masterView>/filterBarLabel}"/>
-					</Toolbar>
-				</infoToolbar>
+			<IconTabBar expandable="false" expanded="true" applyContentPadding="false" backgroundDesign="Solid" upperCase="false" visible="true"
+				selectedKey="Ok">
 				<items>
-					<ObjectListItem type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}" press="onSelectionChange" title="{Titel}"
-						number="{ path: 'ProjectId', formatter: '.formatter.currencyValue' }"></ObjectListItem>
-				</items>
-			</List>	
+					<IconTabFilter icon="sap-icon://capital-projects" iconColor="Positive" text="Projects" count="" design="Vertical" showAll="false"
+						textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
+						<content>
+							<Button text="Add project" type="Default" icon="sap-icon://capital-projects" iconFirst="true" width="auto" enabled="true" visible="true"
+								iconDensityAware="false" class="sapUiTinyMargin" id="addButton" press="onAdd"/>
+							<List id="list" items="{ path: '/ProjectSet', sorter: { path: 'Titel', descending: false }, groupHeaderFactory: '.createGroupHeader' }"
+								busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}"
+								mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true"
+								updateFinished="onUpdateFinished" selectionChange="onSelectionChange">
+								<infoToolbar>
+									<Toolbar active="true" id="filterBar" visible="{masterView>/isFilterBarVisible}" press="onOpenViewSettings">
+										<Title id="filterBarLabel" text="{masterView>/filterBarLabel}"/>
+									</Toolbar>
+								</infoToolbar>
+								<items>
+									<ObjectListItem type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}" press="onSelectionChange" title="{Titel}"
+										number="{ path: 'ProjectId' }"></ObjectListItem>
+								</items>
+							</List>
 						</content>
 					</IconTabFilter>
-					<IconTabFilter icon="sap-icon://employee" iconColor="Positive" text="Employees" count="" design="Vertical" showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
-                         <content>
-                            <Button text="Add employee" type="Default" icon="sap-icon://capital-projects" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" class="sapUiTinyMargin" press="_onButtonPress"/>
-                            <List id="list2" items="{ path: '/ProjectlidSet', sorter: { path: 'Titel', descending: false }, groupHeaderFactory: '.createGroupHeader' }"
-				busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}"
-				mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true"
-				updateFinished="onUpdateFinished" selectionChange="onSelectionChange">
-				<infoToolbar>
-					<Toolbar active="true" id="filterBar2" visible="{masterView>/isFilterBarVisible}" press="onOpenViewSettings">
-						<Title id="filterBarLabel2" text="{masterView>/filterBarLabel}"/>
-					</Toolbar>
-				</infoToolbar>
-				<items>
-					<ObjectListItem type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}" press="onSelectionChange" title="{Titel}"
-						number="{ path: 'ProjectId', formatter: '.formatter.currencyValue' }"></ObjectListItem>
-				</items>
-			</List>	
+					<IconTabFilter icon="sap-icon://employee" iconColor="Positive" text="Employees" count="" design="Vertical" showAll="false"
+						textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
+						<content>
+							<Button text="Add employee" type="Default" icon="sap-icon://capital-projects" iconFirst="true" width="auto" enabled="true" visible="true"
+								iconDensityAware="false" class="sapUiTinyMargin" press="_onButtonPress"/>
+							<List id="list2" items="{ path: '/ProjectlidSet', sorter: { path: 'Titel', descending: false }, groupHeaderFactory: '.createGroupHeader' }"
+								busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}"
+								mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true"
+								updateFinished="onUpdateFinished" selectionChange="onSelectionChange">
+								<infoToolbar>
+									<Toolbar active="true" id="filterBar2" visible="{masterView>/isFilterBarVisible}" press="onOpenViewSettings">
+										<Title id="filterBarLabel2" text="{masterView>/filterBarLabel}"/>
+									</Toolbar>
+								</infoToolbar>
+								<items>
+									<ObjectListItem type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}" press="onSelectionChange" title="{Titel}"
+										number="{ path: 'ProjectId', formatter: '.formatter.currencyValue' }"></ObjectListItem>
+								</items>
+							</List>
 						</content>
 					</IconTabFilter>
-					<IconTabFilter icon="sap-icon://role" iconColor="Positive" text="Roles" count="" design="Vertical" showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
-                         <content>
-                            <Button text="Add Role" type="Default" icon="sap-icon://role" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" class="sapUiTinyMargin" press="onAddRol"/>
-                            <List id="list3" items="{ path: '/RolSet', sorter: { path: 'Titel', descending: false }, groupHeaderFactory: '.createGroupHeader' }"
-				busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}"
-				mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true"
-				updateFinished="onUpdateFinished" selectionChange="onSelectionChange">
-				<infoToolbar>
-					<Toolbar active="true" id="filterBar3" visible="{masterView>/isFilterBarVisible}" press="onOpenViewSettings">
-						<Title id="filterBarLabel3" text="{masterView>/filterBarLabel}"/>
-					</Toolbar>
-				</infoToolbar>
-				<items>
-					<ObjectListItem type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}" press="onSelectionChange" title="{Titel}"
-						number="{ path: 'ProjectId', formatter: '.formatter.currencyValue' }"></ObjectListItem>
-				</items>
-			</List>	
+					<IconTabFilter icon="sap-icon://role" iconColor="Positive" text="Roles" count="" design="Vertical" showAll="false" textDirection="Inherit"
+						enabled="true" visible="true" iconDensityAware="false">
+						<content>
+							<Button text="Add Role" type="Default" icon="sap-icon://role" iconFirst="true" width="auto" enabled="true" visible="true"
+								iconDensityAware="false" class="sapUiTinyMargin" id="addButtonRol" press="onAddRol"/>
+							<List id="list3" items="{ path: '/RolSet', sorter: { path: 'Naam', descending: false }, groupHeaderFactory: '.createGroupHeader' }"
+								busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}"
+								mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true"
+								updateFinished="onUpdateFinished" selectionChange="onSelectionChange">
+								<infoToolbar>
+									<Toolbar active="true" id="filterBar3" visible="{masterView>/isFilterBarVisible}" press="onOpenViewSettings">
+										<Title id="filterBarLabel3" text="{masterView>/filterBarLabel}"/>
+									</Toolbar>
+								</infoToolbar>
+								<items>
+									<ObjectListItem type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}" press="onSelectionChangeRol" title="{Naam}"
+										number="{ path: 'RolId' }"></ObjectListItem>
+								</items>
+							</List>
 						</content>
 					</IconTabFilter>
-					<IconTabFilter icon="sap-icon://overview-chart" iconColor="Positive" text="Roles" count="" design="Vertical" showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
-                         <content>
-                            <Button text="Add Evaluatie" type="Default" icon="sap-icon://overview-chart" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" class="sapUiTinyMargin" press="onAddRapport"/>
-                            <List id="list4" items="{ path: '/RapportSet', sorter: { path: 'Titel', descending: false }, groupHeaderFactory: '.createGroupHeader' }"
-				busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}"
-				mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true"
-				updateFinished="onUpdateFinished" selectionChange="onSelectionChange">
-				<infoToolbar>
-					<Toolbar active="true" id="filterBar4" visible="{masterView>/isFilterBarVisible}" press="onOpenViewSettings">
-						<Title id="filterBarLabel4" text="{masterView>/filterBarLabel}"/>
-					</Toolbar>
-				</infoToolbar>
-				<items>
-					<ObjectListItem type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}" press="onSelectionChange" title="{Titel}"
-						number="{ path: 'ProjectId', formatter: '.formatter.currencyValue' }"></ObjectListItem>
-				</items>
-			</List>	
+					<IconTabFilter icon="sap-icon://overview-chart" iconColor="Positive" text="Reports" count="" design="Vertical" showAll="false"
+						textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
+						<content>
+							<Button text="Add Evaluatie" type="Default" icon="sap-icon://overview-chart" iconFirst="true" width="auto" enabled="true" visible="true"
+								iconDensityAware="false" class="sapUiTinyMargin" press="onAddRapport"/>
+							<List id="list4" items="{ path: '/RapportSet', sorter: { path: 'ProjectId', descending: false }, groupHeaderFactory: '.createGroupHeader' }"
+								busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}"
+								mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true"
+								updateFinished="onUpdateFinished" selectionChange="onSelectionChange">
+								<infoToolbar>
+									<Toolbar active="true" id="filterBar4" visible="{masterView>/isFilterBarVisible}" press="onOpenViewSettings">
+										<Title id="filterBarLabel4" text="{masterView>/filterBarLabel}"/>
+									</Toolbar>
+								</infoToolbar>
+								<items>
+									<ObjectListItem type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}" press="onSelectionChange" title="{ProjectLidId}"
+										number="{ path: 'ProjectId' }"></ObjectListItem>
+								</items>
+							</List>
 						</content>
 					</IconTabFilter>
-			</items>
+				</items>
 			</IconTabBar>
 			<!-- For client side filtering add this to the items attribute:  parameters: {operationMode: 'Client'}}" -->
-			
 		</semantic:content>
 		<!--<semantic:addAction>
 			<semantic:AddAction id="addButton" enabled="{appView>/addEnabled}" press="onAdd"/>
