@@ -115,7 +115,33 @@
 						"master",
 						"object"
 					]
+				},
+				{
+						"pattern": "ProjectlidSet/{ProjectlidId}",
+						"name": "projectlidObject",
+						"target": [
+						"master",
+						"objectProjectlid"
+					]
+				},
+				{
+						"pattern": "RolSet/{RolId}",
+						"name": "rolObject",
+						"target": [
+						"master",
+						"objectRol"
+					]
+				},
+				{
+						"pattern": "RapportSet/{RapportId}",
+						"name": "rapportObject",
+						"target": [
+						"master",
+						"objectRapport"
+					]
 				}
+					
+				
 			],
 			"targets": {
 				"master": {
@@ -129,8 +155,38 @@
 					"viewId": "detail",
 					"viewLevel": 2
 				},
+				"objectProjectlid": {
+					"viewName": "DetailProjectlid",
+					"viewId": "detailprojectlid",
+					"viewLevel": 2
+					
+				},
+				"objectRol": {
+					"viewName": "DetailRol",
+					"viewId": "detailRol",
+					"viewLevel": 2
+					
+				},
+				"objectRapport": {
+					"viewName": "DetailRapport",
+					"viewId": "detailRapport",
+					"viewLevel": 2
+					
+				},
 				"create": {
 					"viewName": "CreateEntity",
+					"viewLevel": 2
+				},
+				"createProjectlid": {
+					"viewName": "CreateProjectlidEntity",
+					"viewLevel": 2
+				},
+				"createRol": {
+					"viewName": "CreateRolEntity",
+					"viewLevel": 2
+				},
+				"createRapport": {
+					"viewName": "CreateRapportEntity",
 					"viewLevel": 2
 				},
 				"detailObjectNotFound": {

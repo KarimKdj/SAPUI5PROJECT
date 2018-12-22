@@ -1,3 +1,4 @@
+/*eslint-disable no-console, no-alert*/
 /*global history */
 sap.ui.define([
 	"sapui5/SAPUI5_FINAL/controller/BaseController",
@@ -29,6 +30,8 @@ sap.ui.define([
 		onInit: function () {
 			// Control state model
 			var oList = this.byId("list"),
+			oListProjectlid = this.byId("list2"),
+			oListRol = this.byId("list3"),
 				oViewModel = this._createViewModel(),
 				// Put down master list's original value for busy indicator delay,
 				// so it can be restored later on. Busy handling on the master list is
@@ -38,6 +41,8 @@ sap.ui.define([
 			this._oGroupSortState = new GroupSortState(oViewModel, grouper.groupUnitNumber(this.getResourceBundle()));
 
 			this._oList = oList;
+			this._oListProjectlid = oListProjectlid;
+			this._oListRol = oListRol;
 			// keeps the filter and search state
 			this._oListFilterState = {
 				aFilter: [],
@@ -60,6 +65,8 @@ sap.ui.define([
 			});
 
 			this.getRouter().getRoute("master").attachPatternMatched(this._onMasterMatched, this);
+			this.getRouter().getRoute("projectlidObject").attachPatternMatched(this._onProjectlidMatched, this);
+			this.getRouter().getRoute("rolObject").attachPatternMatched(this._onRolMatched, this);
 			this.getRouter().attachBypassed(this.onBypassed, this);
 			this._oODataModel = this.getOwnerComponent().getModel();
 		},
@@ -120,6 +127,8 @@ sap.ui.define([
 		 */
 		onRefresh: function () {
 			this._oList.getBinding("items").refresh();
+			this._oListProjectlid.getBinding("items").refresh();
+			this._oListRol.getBinding("items").refresh();
 		},
 
 		/**
@@ -217,6 +226,36 @@ sap.ui.define([
 			}
 			that.getModel("appView").setProperty("/addEnabled", true);
 		},
+		
+		onSelectionChangeProjectlid: function (oEvent) {
+			var that = this;
+			var oItem = oEvent.getParameter("listItem") || oEvent.getSource();
+			var fnLeave = function () {
+				that._oODataModel.resetChanges();
+				that._showDetailProjectlid(oItem);
+			};
+			if (this._oODataModel.hasPendingChanges()) {
+				this._leaveEditPage(fnLeave);
+			} else {
+				this._showDetailProjectlid(oItem);
+			}
+			that.getModel("appView").setProperty("/addEnabled", true);
+		},
+		
+		onSelectionChangeRol: function (oEvent) {
+			var that = this;
+			var oItem = oEvent.getParameter("listItem") || oEvent.getSource();
+			var fnLeave = function () {
+				that._oODataModel.resetChanges();
+				that._showDetailRol(oItem);
+			};
+			if (this._oODataModel.hasPendingChanges()) {
+				this._leaveEditPage(fnLeave);
+			} else {
+				this._showDetailRol(oItem);
+			}
+			that.getModel("appView").setProperty("/addEnabled", true);
+		},
 
 		/**
 		 * Event handler for the bypassed event, which is fired when no routing pattern matched.
@@ -225,6 +264,8 @@ sap.ui.define([
 		 */
 		onBypassed: function () {
 			this._oList.removeSelections(true);
+			this._oListProjectlid.removeSelections(true);
+			this._oListRol.removeSelections(true);
 		},
 
 		/**
@@ -273,6 +314,18 @@ sap.ui.define([
 		onAdd: function () {
 			this.getModel("appView").setProperty("/addEnabled", false);
 			this.getRouter().getTargets().display("create");
+
+		},
+		
+		onAddProjectlid  : function () {
+			this.getModel("appView").setProperty("/addEnabled", false);
+			this.getRouter().getTargets().display("createProjectlid");
+
+		},
+		
+		onAddRol: function () {
+			this.getModel("appView").setProperty("/addEnabled", false);
+			this.getRouter().getTargets().display("createRol");
 
 		},
 
@@ -327,6 +380,7 @@ sap.ui.define([
 		 * @private
 		 */
 		_onMasterMatched: function () {
+				console.log("testonmastermatched");
 			this._oListSelector.oWhenListLoadingIsDone.then(
 				function (mParams) {
 					if (mParams.list.getMode() === "None") {
@@ -336,6 +390,52 @@ sap.ui.define([
 					if (!mParams.list.getSelectedItem()) {
 						this.getRouter().navTo("object", {
 							ProjectId: encodeURIComponent(mParams.firstListitem.getBindingContext().getProperty("ProjectId"))
+						}, true);
+					}
+				}.bind(this),
+				function (mParams) {
+					if (mParams.error) {
+						return;
+					}
+					this.getRouter().getTargets().display("detailNoObjectsAvailable");
+				}.bind(this)
+			);
+		},
+		
+		_onProjectlidMatched: function () {
+			console.log("testonprojectlidmatched");
+			this._oListSelector.oWhenListLoadingIsDone.then(
+				function (mParams) {
+					if (mParams.list.getMode() === "None") {
+						return;
+					}
+					this.getModel("appView").setProperty("/addEnabled", true);
+					if (!mParams.list.getSelectedItem()) {
+						this.getRouter().navTo("projectlidObject", {
+							ProjectlidId: encodeURIComponent(mParams.firstListitem.getBindingContext().getProperty("ProjectlidId"))
+						}, true);
+					}
+				}.bind(this),
+				function (mParams) {
+					if (mParams.error) {
+						return;
+					}
+					this.getRouter().getTargets().display("detailNoObjectsAvailable");
+				}.bind(this)
+			);
+		},
+		
+		_onRolMatched: function () {
+			console.log("testonrolmatched");
+			this._oListSelector.oWhenListLoadingIsDone.then(
+				function (mParams) {
+					if (mParams.list.getMode() === "None") {
+						return;
+					}
+					this.getModel("appView").setProperty("/addEnabled", true);
+					if (!mParams.list.getSelectedItem()) {
+						this.getRouter().navTo("rolObject", {
+							RolId: encodeURIComponent(mParams.firstListitem.getBindingContext().getProperty("RolId"))
 						}, true);
 					}
 				}.bind(this),
@@ -360,6 +460,20 @@ sap.ui.define([
 				ProjectId: encodeURIComponent(oItem.getBindingContext().getProperty("ProjectId"))
 			}, bReplace);
 		},
+		
+		_showDetailProjectlid: function (oItem) {
+			var bReplace = !Device.system.phone;
+			this.getRouter().navTo("projectlidObject", {
+				ProjectlidId: encodeURIComponent(oItem.getBindingContext().getProperty("ProjectlidId"))
+			}, bReplace);
+		},
+		
+		_showDetailRol: function (oItem) {
+			var bReplace = !Device.system.phone;
+			this.getRouter().navTo("rolObject", {
+				RolId: encodeURIComponent(oItem.getBindingContext().getProperty("RolId"))
+			}, bReplace);
+		},
 
 		/**
 		 * Sets the item count on the master list header
@@ -373,6 +487,14 @@ sap.ui.define([
 				sTitle = this.getResourceBundle().getText("masterTitleCount", [iTotalItems]);
 				this.getModel("masterView").setProperty("/title", sTitle);
 			}
+			if (this._oListProjectlid.getBinding("items").isLengthFinal()) {
+				sTitle = this.getResourceBundle().getText("masterTitleCount", [iTotalItems]);
+				this.getModel("masterView").setProperty("/title", sTitle);
+			}
+			if (this._oListRol.getBinding("items").isLengthFinal()) {
+				sTitle = this.getResourceBundle().getText("masterTitleCount", [iTotalItems]);
+				this.getModel("masterView").setProperty("/title", sTitle);
+			}
 		},
 
 		/**
@@ -383,6 +505,8 @@ sap.ui.define([
 			var aFilters = this._oListFilterState.aSearch.concat(this._oListFilterState.aFilter),
 				oViewModel = this.getModel("masterView");
 			this._oList.getBinding("items").filter(aFilters, "Application");
+			this._oListProjectlid.getBinding("items").filter(aFilters, "Application");
+			this._oListRol.getBinding("items").filter(aFilters, "Application");
 			// changes the noDataText of the list in case there are no filter results
 			if (aFilters.length !== 0) {
 				oViewModel.setProperty("/noDataText", this.getResourceBundle().getText("masterListNoDataWithFilterOrSearchText"));
@@ -398,6 +522,8 @@ sap.ui.define([
 		 */
 		_applyGroupSort: function (aSorters) {
 			this._oList.getBinding("items").sort(aSorters);
+			this._oListProjectlid.getBinding("items").sort(aSorters);
+				this._oListRol.getBinding("items").sort(aSorters);
 		},
 
 		/**

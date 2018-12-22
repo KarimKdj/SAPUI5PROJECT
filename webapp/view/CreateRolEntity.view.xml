@@ -1,0 +1,32 @@
+<mvc:View controllerName="sapui5.SAPUI5_FINAL.controller.CreateRolEntity" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:smart="sap.ui.comp.smartfield" xmlns="sap.m">
+	<semantic:DetailPage id="pageRolCreate" navButtonPress="onNavBack" title="Create a new Role" busy="{viewModel>/busy}">
+		<semantic:content>
+			<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" id="newEntitySimpleFormRol"
+				labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024"
+				title="{= ${viewModel>/mode} === 'edit'? 'Edit Role': 'New Role'}">
+				<f:content>
+					<Label text="Rol_id" required="false"/>
+					<Input name="RolId" id="Rol_id" valueLiveUpdate=" true" liveChange="_validateSaveEnablement" 
+					enabled="{= ${viewModel>/mode} === 'edit'?
+						false: true}" visible="true" value="{ path: 'RolId', type: 'sap.ui.model.odata.type.Int32' , constraints:{ nullable:false } }"/>
+						<Label text="Name" required="true"/>
+						<Input name="Naam" id="naam_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+							enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+							value="{ path: 'Naam', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:30, nullable:false } }"/>
+						<Label text="Description" required="true"/>
+						<Input name="Beschrijving" id="beschrijving_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+							enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+							value="{ path: 'Beschrijving', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:30, nullable:false } }"/>
+					</f:content>
+				</f:SimpleForm>
+			</semantic:content>
+			<semantic:saveAction>
+				<semantic:SaveAction id="saveRole" enabled="{viewModel>/enableCreate}" press="onSave"/>
+			</semantic:saveAction>
+			<semantic:cancelAction>
+				<semantic:CancelAction id="cancelRole" press="onCancel"></semantic:CancelAction>
+			</semantic:cancelAction>
+		</semantic:DetailPage>
+	</mvc:View>
