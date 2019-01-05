@@ -49,7 +49,7 @@
 				</infoToolbar>
 				<items>
 					<ObjectListItem type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}" press="onSelectionChange" title="{Achternaam}"
-						number="{ path: 'ProjectlidId', formatter: '.formatter.currencyValue' }"></ObjectListItem>
+						number="{ path: 'ProjectlidId' }"></ObjectListItem>
 				</items>
 			</List>	
 						</content>

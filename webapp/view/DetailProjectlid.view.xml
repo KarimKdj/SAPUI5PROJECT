@@ -3,7 +3,7 @@
 	<semantic:DetailPage id="projectlid" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitleProjectlid}"
 		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
 		<semantic:content>
-			<ObjectHeader id="objectHeader" title="{Achternaam} {Voornaam}" number="{ path: 'ProjectlidId', formatter: '.formatter.currencyValue' }"></ObjectHeader>
+			<ObjectHeader id="objectHeader" title="{Achternaam} {Voornaam}" number="{ path: 'ProjectlidId' }"></ObjectHeader>
 			<Button text="Edit"/>
 			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
 				<items>
@@ -11,7 +11,7 @@
 					<IconTabFilter id="iconTabBarFilterProjectlid2" icon="sap-icon://attachment" tooltip="{i18n>detailIconTabBarAttachments}"></IconTabFilter>
 				</items>
 			</IconTabBar>
-									<Text text="Employee number: {projectlidId}"  width="100%"  textAlign="Begin" textDirection="Inherit" visible="true"/>
+									<Text text="Employee number: {ProjectlidId}"  width="100%"  textAlign="Begin" textDirection="Inherit" visible="true"/>
                             		<Text text="First name: {Voornaam}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                     <Text text="Last name: {Achternaam}"  width="100%"  textAlign="Begin" textDirection="Inherit" visible="true"/>
                                     <Text text="Function: {Functie}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
