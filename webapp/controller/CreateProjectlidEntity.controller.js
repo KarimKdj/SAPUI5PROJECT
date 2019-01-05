@@ -169,7 +169,7 @@ sap.ui.define([
 				oView = this.getView();
 			this._oViewModel.setProperty("/mode", "edit");
 			this._oViewModel.setProperty("/enableCreate", true);
-			this._oViewModel.setProperty("/viewTitle", this._oResourceBundle.getText("editViewTitle"));
+			this._oViewModel.setProperty("/viewTitle", this._oResourceBundle.getText("editViewTitleProjectlid"));
 
 			oView.bindElement({
 				path: oData.objectPath
@@ -190,7 +190,7 @@ sap.ui.define([
 				return;
 			}
 
-			this._oViewModel.setProperty("/viewTitle", this._oResourceBundle.getText("createViewTitle"));
+			this._oViewModel.setProperty("/viewTitle", this._oResourceBundle.getText("createViewTitleProjectlid"));
 			this._oViewModel.setProperty("/mode", "create");
 			var oContext = this._oODataModel.createEntry("ProjectlidSet", {
 				success: this._fnEntityCreated.bind(this),

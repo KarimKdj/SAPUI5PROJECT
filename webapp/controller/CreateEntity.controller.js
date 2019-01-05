@@ -190,7 +190,7 @@ sap.ui.define([
 				return;
 			}
 
-			this._oViewModel.setProperty("/viewTitle", this._oResourceBundle.getText("createViewTitle"));
+			this._oViewModel.setProperty("/viewTitle", this._oResourceBundle.getText("createViewTitleProjectlid"));
 			this._oViewModel.setProperty("/mode", "create");
 			var oContext = this._oODataModel.createEntry("ProjectSet", {
 				success: this._fnEntityCreated.bind(this),
