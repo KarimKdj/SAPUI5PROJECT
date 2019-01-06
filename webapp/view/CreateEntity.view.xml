@@ -13,22 +13,22 @@
 						value="{ path: 'ProjectId', type: 'sap.ui.model.odata.type.Int32' , constraints:{ nullable:false } }"/>
 					<Label text="Titel" required="true"/>
 					<Input name="Titel" id="Titel_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
-						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						enabled="{= ${viewModel>/mode} === 'edit'? true: false}" visible="true"
 						value="{ path: 'Titel', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:30, nullable:false } }"/>
 					<Label text="Klant" required="true"/>
 					<Input name="Klant" id="Klant_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
-						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						enabled="{= ${viewModel>/mode} === 'edit'? true: false}" visible="true"
 						value="{ path: 'Klant', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:30, nullable:false } }"/>
 					<Label text="Locatie" required="true"/>
 					<Input name="Locatie" id="Locatie_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
-						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						enabled="{= ${viewModel>/mode} === 'edit'? true: false}" visible="true"
 						value="{ path: 'Locatie', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:30, nullable:false } }"/>
 					<Label text="Start" required="true"/>
 					<DatePicker name="Startdatum" value="{ path: 'Startdatum', type: 'sap.ui.model.type.DateTime'}" id="Startdatum_id" type="DateTime"
-						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"/>
+						enabled="{= ${viewModel>/mode} === 'edit'? true: false}" visible="true"/>
 					<Label text="Time Stamp" required="true"/>
 					<DatePicker name="Einde" value="{ path: 'Einddatum', type: 'sap.ui.model.type.DateTime'}" id="Einddatum_id" type="DateTime"
-						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"/>
+						enabled="{= ${viewModel>/mode} === 'edit'? true: false}" visible="true"/>
 				</f:content>
 			</f:SimpleForm>
 		</semantic:content>

@@ -4,11 +4,12 @@
 		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
 		<semantic:content>
 			<ObjectHeader id="objectHeaderRol" title="{Naam}" number="{ path: 'RolId'}"></ObjectHeader>
-			<Button text="Edit"/>
+			
 			<IconTabBar id="iconTabBarRol" class="sapUiResponsiveContentPadding">
 				<items>
+					<IconTabFilter id="iconTabBarFilterRol3" icon="sap-icon://role" iconColor="Default" text = "Rol Detail"></IconTabFilter>
 					<IconTabFilter id="iconTabBarFilterRol1" icon="sap-icon://hint" tooltip="{i18n>detailIconTabBarInfo}"></IconTabFilter>
-					<IconTabFilter id="iconTabBarFilterRol2" icon="sap-icon://attachment" tooltip="{i18n>detailIconTabBarAttachments}"></IconTabFilter>
+					
 				</items>
 			</IconTabBar>
 									<Text text="Id: {RolId}"  width="100%"  textAlign="Begin" textDirection="Inherit" visible="true"/>
