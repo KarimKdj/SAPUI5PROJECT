@@ -191,7 +191,7 @@ sap.ui.define([
 			}
 
 			this._oViewModel.setProperty("/viewTitle", this._oResourceBundle.getText("createViewTitle"));
-			this._oViewModel.setProperty("/mode", "create");
+			this._oViewModel.setProperty("/mode", "edit");
 			var oContext = this._oODataModel.createEntry("RolSet", {
 				success: this._fnEntityCreated.bind(this),
 				error: this._fnEntityCreationFailed.bind(this)
