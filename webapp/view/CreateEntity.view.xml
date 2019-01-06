@@ -29,6 +29,12 @@
 					<Label text="Time Stamp" required="true"/>
 					<DatePicker name="Einde" value="{ path: 'Einddatum', type: 'sap.ui.model.type.DateTime'}" id="Einddatum_id" type="DateTime"
 						enabled="{= ${viewModel>/mode} === 'edit'? true: false}" visible="true"/>
+					
+                    <Label text="ProjectLid"/>
+                    <ComboBox id="prolid"  items="{ path: '/ProjectlidSet' }">
+                            <core:Item key="{Id}" text="{Voornaam} {Naam}"/>
+                    </ComboBox>
+                               
 				</f:content>
 			</f:SimpleForm>
 		</semantic:content>
