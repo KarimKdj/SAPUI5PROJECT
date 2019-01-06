@@ -3,7 +3,7 @@
 	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}"
 		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
 		<semantic:content>
-			<ObjectHeader id="objectHeader" title="{Titel}" number="{ path: 'ProjectId', formatter: '.formatter.currencyValue' }"></ObjectHeader>
+			<ObjectHeader id="objectHeader" title="{Titel}" number="{ path: 'ProjectId' }"></ObjectHeader>
 			<!--<Button text="Edit" press="onEdit"/>-->
 			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
 				<items>
