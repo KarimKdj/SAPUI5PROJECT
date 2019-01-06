@@ -16,7 +16,7 @@ sap.ui.define([
 
 		onInit: function () {
 			var that = this;
-			this.getRouter().getTargets().getTarget("create").attachDisplay(null, this._onDisplay, this);
+			this.getRouter().getTargets().getTarget("createProjectlid").attachDisplay(null, this._onDisplay, this);
 			this._oODataModel = this.getOwnerComponent().getModel();
 			this._oResourceBundle = this.getResourceBundle();
 			this._oViewModel = new JSONModel({
@@ -133,7 +133,7 @@ sap.ui.define([
 				// The history contains a previous entry
 				history.go(-1);
 			} else {
-				this.getRouter().getTargets().display("object");
+				this.getRouter().getTargets().display("projectlidObject");
 			}
 		},
 
@@ -169,7 +169,7 @@ sap.ui.define([
 				oView = this.getView();
 			this._oViewModel.setProperty("/mode", "edit");
 			this._oViewModel.setProperty("/enableCreate", true);
-			this._oViewModel.setProperty("/viewTitle", this._oResourceBundle.getText("editViewTitle"));
+			this._oViewModel.setProperty("/viewTitle", this._oResourceBundle.getText("editViewTitleProjectlid"));
 
 			oView.bindElement({
 				path: oData.objectPath
@@ -190,7 +190,7 @@ sap.ui.define([
 				return;
 			}
 
-			this._oViewModel.setProperty("/viewTitle", this._oResourceBundle.getText("createViewTitle"));
+			this._oViewModel.setProperty("/viewTitle", this._oResourceBundle.getText("createViewTitleProjectlid"));
 			this._oViewModel.setProperty("/mode", "create");
 			var oContext = this._oODataModel.createEntry("ProjectlidSet", {
 				success: this._fnEntityCreated.bind(this),
@@ -247,7 +247,7 @@ sap.ui.define([
 		_fnUpdateSuccess: function () {
 			this.getModel("appView").setProperty("/busy", false);
 			this.getView().unbindObject();
-			this.getRouter().getTargets().display("object");
+			this.getRouter().getTargets().display("projectlidObject");
 		},
 
 		/**
