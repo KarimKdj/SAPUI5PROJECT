@@ -13,15 +13,15 @@
 						value="{ path: 'ProjectlidId', type: 'sap.ui.model.odata.type.Int32' , constraints:{ nullable:false } }"/>
 					<Label text="First name" required="true"/>
 					<Input name="Voornaam" id="Voornaam_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
-						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						enabled="{= ${viewModel>/mode} === 'edit'? true: false}" visible="true"
 						value="{ path: 'Voornaam', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:30, nullable:false } }"/>
 					<Label text="Last name" required="true"/>
 					<Input name="Achternaam" id="Achternaam_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
-						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						enabled="{= ${viewModel>/mode} === 'edit'? true: false}" visible="true"
 						value="{ path: 'Achternaam', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:30, nullable:false } }"/>
 					<Label text="Function" required="true"/>
 					<Input name="Functie" id="Functie_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
-						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						enabled="{= ${viewModel>/mode} === 'edit'? true: false}" visible="true"
 						value="{ path: 'Functie', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:30, nullable:false } }"/>
 				</f:content>
 			</f:SimpleForm>

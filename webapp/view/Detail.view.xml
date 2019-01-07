@@ -3,12 +3,13 @@
 	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}"
 		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
 		<semantic:content>
-			<ObjectHeader id="objectHeader" title="{Titel}" number="{ path: 'ProjectId', formatter: '.formatter.currencyValue' }"></ObjectHeader>
-			<Button text="Edit"/>
+			<ObjectHeader id="objectHeader" title="{Titel}" number="{ path: 'ProjectId' }"></ObjectHeader>
+			<!--<Button text="Edit" press="onEdit"/>-->
 			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
 				<items>
+					
+					<IconTabFilter id="iconTabBarFilterRol3" icon="sap-icon://capital-projects" iconColor="Default" text = "Project Detail"></IconTabFilter>
 					<IconTabFilter id="iconTabBarFilter1" icon="sap-icon://hint" tooltip="{i18n>detailIconTabBarInfo}"></IconTabFilter>
-					<IconTabFilter id="iconTabBarFilter2" icon="sap-icon://attachment" tooltip="{i18n>detailIconTabBarAttachments}"></IconTabFilter>
 				</items>
 			</IconTabBar>
 									<Text text="{Titel}"  width="100%"  textAlign="Begin" textDirection="Inherit" visible="true"/>

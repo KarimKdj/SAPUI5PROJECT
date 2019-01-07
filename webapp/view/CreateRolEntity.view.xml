@@ -13,11 +13,11 @@
 						false: true}" visible="true" value="{ path: 'RolId', type: 'sap.ui.model.odata.type.Int32' , constraints:{ nullable:false } }"/>
 						<Label text="Name" required="true"/>
 						<Input name="Naam" id="naam_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
-							enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+							enabled="{= ${viewModel>/mode} === 'edit'? true: false}" visible="true"
 							value="{ path: 'Naam', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:30, nullable:false } }"/>
 						<Label text="Description" required="true"/>
 						<Input name="Beschrijving" id="beschrijving_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
-							enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+							enabled="{= ${viewModel>/mode} === 'edit'? true: false}" visible="true"
 							value="{ path: 'Beschrijving', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:30, nullable:false } }"/>
 					</f:content>
 				</f:SimpleForm>
